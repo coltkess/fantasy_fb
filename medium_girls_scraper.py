@@ -1,6 +1,7 @@
 import bs4 as bs
 import urllib.request
 import pandas as pd
+import SQLalchemy as sq
 
 
 def getSchools():
@@ -18,7 +19,7 @@ def getSchools():
     return school_dict
 
 def getDfs():
-    school_set = getSchools()
+    school_set = {'abilene-christian': 'Abilene Christian', 'air-force': 'Air Force', 'akron': 'Akron', 'alabama-am': 'Alabama A&M', 'alabama-birmingham': 'Alabama-Birmingham'}
     dfs = []
     final_df = pd.DataFrame()
     for school in school_set:
@@ -27,7 +28,7 @@ def getDfs():
         soup = bs.BeautifulSoup(page, 'lxml')
         count = 0
         pre_df = dict()
-        school_set = getSchools()
+        school_set = {'abilene-christian': 'Abilene Christian', 'air-force': 'Air Force', 'akron': 'Akron', 'alabama-am': 'Alabama A&M', 'alabama-birmingham': 'Alabama-Birmingham'}
         table = soup.find("tbody")
         featuresWanted = {'opp_name', 'pts', 'opp_pts',
                           'game_location', 'game_result', 'overtimes', 'wins', 'losses',
@@ -56,8 +57,12 @@ def removeNCAA(x):
         return x[:-5]
     else:
         return x
-print(getDfs())
 
+this = getDfs()
+
+engine = sq.create_engine('sqlite://', echo=False)
+
+this.to_sql('some_teams', con=engine)
 #def csvDump():
 #    df = getDfs()
 #    df.to_csv("scraped_data.csv")
