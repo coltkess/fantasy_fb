@@ -4,25 +4,33 @@ import pandas as pd
 
 #def rankings_scraper(year, sports_reference_url):
     # Uses urllib.request to turn the URL into bytes legible by BeautifulSoup.
-site_byte = urllib.request.urlopen("https://www.pro-football-reference.com/years/2017/fantasy.htm").read()
+
 
     # Takes the site bytes and turns them into a bs4.BeautifulSoup object, which looks like html,
     # and reads like it if the .prettify() method is applied.
-soup = bs.BeautifulSoup(site_byte, 'lxml')
+
 
 #print(soup.prettify)
 
 # Returns a list of bs4 elements within `soup` surrounded by a 'th' tag, returns them in a list.
-table = soup.find('tbody')
-player_dict = dict()
-for row in table.findAll("td", {"data-stat": "player"}):
-    player_name = row.getText()
-    for a in row.find_all('a', href=True):
-        link = a['href'].strip()
-        name = link[11:]
-        player_dict[name] = player_name
+def year_to_player_dict_creator(year):
+    site_byte = urllib.request.urlopen("https://www.pro-football-reference.com/years/{}/fantasy.htm".format(year)).read()
+    soup = bs.BeautifulSoup(site_byte, 'lxml')
+    table = soup.find('tbody')
+    player_dict = dict()
+    for row in table.findAll("td", {"data-stat": "player"}):
+        player_name = row.getText()
+        for a in row.find_all('a', href=True):
+            link = a['href'].strip()
+            name = link[11:]
+            player_dict[name] = player_name
+    features_wanted = {"team", "fantasy_pos", "age", "g", "gs", "pass_cmp", "pass_att", "pass_yds", "pass_td", "pass_int", "rush_att", "rush_yds", "rush_yds_per_att", "rush_td", "targets", "rec", "rec_yds", "rec_yds_per_rec", "rec_td", "two_pt_md", "two_pt_pass", "fantasy_points", "fantasy_points_ppr", "draftkings_points", "fanduel_points", "vbd", "fantasy_rank_pos", "fantasy_rank_overall"}
+    year_to_players_dict = {year: player_dict}
+    return year_to_players_dict
 
-print(player_dict)
+# This works. It produces the output: 'Todd Gurley*+'.
+# fantasy_2017 = year_to_player_dict_creator('2017')
+# print(fantasy_2017['2017']['GurlTo01.htm'])
 
 
 
