@@ -24,9 +24,33 @@ def year_to_player_dict_creator(year):
             link = a['href'].strip()
             name = link[11:]
             player_dict[name] = player_name
-    features_wanted = {"team", "fantasy_pos", "age", "g", "gs", "pass_cmp", "pass_att", "pass_yds", "pass_td", "pass_int", "rush_att", "rush_yds", "rush_yds_per_att", "rush_td", "targets", "rec", "rec_yds", "rec_yds_per_rec", "rec_td", "two_pt_md", "two_pt_pass", "fantasy_points", "fantasy_points_ppr", "draftkings_points", "fanduel_points", "vbd", "fantasy_rank_pos", "fantasy_rank_overall"}
     year_to_players_dict = {year: player_dict}
-    return year_to_players_dict
+    pre_df = dict()
+    features = {"team", "fantasy_pos", "age", "g", "gs", "pass_cmp", "pass_att", "pass_yds", "pass_td", "pass_int", "rush_att", "rush_yds", "rush_yds_per_att", "rush_td", "targets", "rec", "rec_yds", "rec_yds_per_rec", "rec_td", "two_pt_md", "two_pt_pass", "fantasy_points", "fantasy_points_ppr", "draftkings_points", "fanduel_points", "vbd", "fantasy_rank_pos", "fantasy_rank_overall"}
+    rows = table.find_all("tr")
+    for row in rows:
+        if (row.find('th', {"scope": "row"}) != None):
+            for f in features:
+                cell = row.find("td", {"data-stat": f})
+                a = cell.text.strip().encode()
+                text = a.decode("utf-8")
+                if f in pre_df:
+                    pre_df[f].append(text)
+                else:
+                    pre_df[f] = [text]
+    return year_to_players_dict, pre_df
+
+print(year_to_player_dict_creator(2017))
+        #df = pd.DataFrame.from_dict(pre_df)
+        #df["team"] = df["team"].apply()
+
+
+
+                #a = cell.text.strip().encode()
+                #text = a.decode("utf-8")
+                #if f in pre_df
+
+
 
 # This works. It produces the output: 'Todd Gurley*+'.
 # fantasy_2017 = year_to_player_dict_creator('2017')
