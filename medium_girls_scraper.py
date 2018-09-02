@@ -3,6 +3,7 @@ import urllib.request
 import pandas as pd
 import SQLalchemy as sq
 
+# Link to her tutorial: https://medium.com/@smehta/scrape-and-create-your-own-beautiful-dataset-from-sports-reference-com-using-beautifulsoup-python-c26d6920684e
 
 def getSchools():
     page = urllib.request.urlopen("https://www.sports-reference.com/cbb/seasons/2018-school-stats.html").read()
