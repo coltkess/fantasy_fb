@@ -1,23 +1,24 @@
-#matplotlib inline
+# matplotlib inline
 
 import bs4 as bs
 import urllib.request
 import pandas as pd
+import sqlite3
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#def rankings_scraper(year, sports_reference_url):
-    # Uses urllib.request to turn the URL into bytes legible by BeautifulSoup.
+# def rankings_scraper(year, sports_reference_url):
+# Uses urllib.request to turn the URL into bytes legible by BeautifulSoup.
 
 
-    # Takes the site bytes and turns them into a bs4.BeautifulSoup object, which looks like html,
-    # and reads like it if the .prettify() method is applied.
+# Takes the site bytes and turns them into a bs4.BeautifulSoup object, which looks like html,
+# and reads like it if the .prettify() method is applied.
 
 
-#print(soup.prettify)
+# print(soup.prettify)
 
 # Returns a list of bs4 elements within `soup` surrounded by a 'th' tag, returns them in a list.
-#def year_to_player_dict_creator(year##TODO if you want to make this a function, which you do, you need to change this back to a variable.):
+# def year_to_player_dict_creator(year##TODO if you want to make this a function, which you do, you need to change this back to a variable.):
 
 site_byte = urllib.request.urlopen("https://www.pro-football-reference.com/years/{}/fantasy.htm".format(2017)).read()
 soup = bs.BeautifulSoup(site_byte, 'lxml')
@@ -46,7 +47,7 @@ column_headers[25] = 'DraftKings Pts'
 column_headers[26] = 'FanDuel Pts'
 column_headers[28] = 'FanDuel Pts'
 column_headers.extend(["player_nfl_link", "player_team_link"])
-table_rows = soup.select("#fantasy tr")[1:]
+table_rows = soup.select("#fantasy tr")
 
 
 def extract_player_data(table_rows_variable):
@@ -74,8 +75,8 @@ def extract_player_data(table_rows_variable):
             # For all "a" elements in the row, get the text
             # NOTE: Same " HOF" text issue as the player_list above
         links_dict = {(link.get_text()): link["href"] for link in row.find_all("a", href=True)}
-        player_list.insert(0,
-                           '')  # TODO figure out why this is even necessary. I have an "Rk" table header, but no data for it.
+        player_list.insert(0, '')  # TODO figure out why this is even necessary. I have an "Rk" table header,
+        # but no data for it.
         player_list.append(links_dict.get(player_list[1], ""))
         player_list.append(links_dict.get(player_list[2], ""))
         player_data.append(player_list)
@@ -92,7 +93,7 @@ errors_list = []
 
 url_template = "https://www.pro-football-reference.com/years/{year}/fantasy.htm"
 # for each year from 2000 to (and including) 2017
-for year in range(2017, 2018):
+for year in range(2000, 2018):
     # Using try/except block to catch and inspect any urls that cause an error
     try:
         # get the season URL
@@ -131,7 +132,7 @@ for year in range(2017, 2018):
         column_headers.extend(["player_nfl_link", "player_team_link"])
 
         # select the data from the tale using the '#fantasy tr' CSS selector
-        table_rows = soup.select("#fantasy tr")[1:]
+        table_rows = soup.select("#fantasy tr")
 
         # extract player data from the table rows
         player_data = extract_player_data(table_rows)
@@ -141,7 +142,8 @@ for year in range(2017, 2018):
 
         # add the year of the season to the dataframe
         year_df.insert(0, "Season", year)
-
+        year_df_list = year_df.values.tolist()
+        print(year_df_list[1])
         # append the current dataframe to the list of dataframes
         season_dfs_list.append(year_df)
 
@@ -153,50 +155,119 @@ for year in range(2017, 2018):
 
 fantasy_df = pd.concat(season_dfs_list, ignore_index=True)
 
-print(column_headers)
-print(fantasy_df.head())
+conn = sqlite3.connect('fantasy_football_since_2000.db')
+
+c = conn.cursor()
+
+c.execute("""CREATE TABLE IF NOT EXISTS fantasy_football2 (
+            Season integer,
+            Rk integer,
+            Player text,
+            Team text,
+            Position text,
+            Age integer,
+            G integer,
+            GS integer,
+            Pass_Cmp integer,
+            Pass_Att integer,
+            Pass_Yds integer,
+            Pass_TD integer,
+            Rush_Att integer,
+            Rush_Yds integer,
+            Rush_YpA real,
+            Rush_TD integer,
+            Rec_Tgt integer,
+            Rec integer,
+            Rec_Yds integer,
+            Rec_YpR real,
+            Rec_TD integer,
+            Two_Pt_Made integer,
+            Two_Pt_Pass integer,
+            Fantasy_Pts real,
+            PPR_Pts real,
+            DraftKings_Pts real,
+            FanDuel_Pts real,
+            VBD integer,
+            PosRank integer,
+            OvRank integer,
+            player_nfl_link text,
+            player_team_link text
+)""")
+
+
+fantasy_df.to_sql(name='fantasy_football', con=conn, if_exists='replace', index=False, dtype={'Season': 'intiger',
+            'Rk': 'integer',
+            'Player': 'text',
+            'Team': 'text',
+            'Position': 'text',
+            'Age': 'integer',
+            'G': 'integer',
+            'GS': 'integer',
+            'Pass_Cmp': 'integer',
+            'Pass_Att': 'integer',
+            'Pass_Yds': 'integer',
+            'Pass_TD': 'integer',
+            'Rush_Att': 'integer',
+            'Rush_Yds': 'integer',
+            'Rush_YpA': 'real',
+            'Rush_TD': 'integer',
+            'Rec_Tgt': 'integer',
+            'Rec': 'integer',
+            'Rec_Yds': 'integer',
+            'Rec_YpR': 'real',
+            'Rec_TD': 'integer',
+            'Two_Pt_Made': 'integer',
+            'Two_Pt_Pass': 'integer',
+            'Fantasy_Pts': 'real',
+            'PPR_Pts': 'real',
+            'DraftKings_Pts': 'real',
+            'FanDuel_Pts': 'real',
+            'VBD': 'integer',
+            'PosRank': 'integer',
+            'OvRank': 'integer',
+            'player_nfl_link': 'text',
+            'player_team_link': 'text'})
+c.close()
 
 
 
-    #player_dict = dict()
-    #team_dict = dict()
-    #for row in table.findAll("td", {"data-stat": "player"}):
-    #    player_name = row.getText()
-    #    for a in row.find_all('a', href=True):
-    #        link = a['href'].strip()
-    #        name = link[11:]
-    #        player_dict[name] = player_name
-    ##for row in table.findAll("td", {"data-stat": "team"}):
-    #    team_name = row.getText()
-    #    for a in row[1].find_all('a', href=True):
-    #        team_link = a['href'].strip()
-    #        team = team_link[7:]
-    #        team_dict[team] = team_name
+# player_dict = dict()
+# team_dict = dict()
+# for row in table.findAll("td", {"data-stat": "player"}):
+#    player_name = row.getText()
+#    for a in row.find_all('a', href=True):
+#        link = a['href'].strip()
+#        name = link[11:]
+#        player_dict[name] = player_name
+##for row in table.findAll("td", {"data-stat": "team"}):
+#    team_name = row.getText()
+#    for a in row[1].find_all('a', href=True):
+#        team_link = a['href'].strip()
+#        team = team_link[7:]
+#        team_dict[team] = team_name
 #
-    ##features = {"team", "fantasy_pos", "age", "g", "gs", "pass_cmp", "pass_att", "pass_yds", "pass_td", "pass_int", "rush_att", "rush_yds", "rush_yds_per_att", "rush_td", "targets", "rec", "rec_yds", "rec_yds_per_rec", "rec_td", "two_pt_md", "two_pt_pass", "fantasy_points", "fantasy_points_ppr", "draftkings_points", "fanduel_points", "vbd", "fantasy_rank_pos", "fantasy_rank_overall"}
-    ##for f in features:
-    ##    for row in table.find_all("td", {"data-stat": f}):
-    ##        stat = row.find_all
-    ##        cell = row.find("td", {"data-stat": f})
-    ##        a = cell.text.strip().encode()
-    ##        text = a.decode("utf-8")
-    ##        if f in pre_df:
-    ##            pre_df[f].append(text)
-    ##        else:
-    ##            pre_df[f] = [text]
-    #year_to_players_dict = {year: player_dict}
-    #return column_headers
+##features = {"team", "fantasy_pos", "age", "g", "gs", "pass_cmp", "pass_att", "pass_yds", "pass_td", "pass_int", "rush_att", "rush_yds", "rush_yds_per_att", "rush_td", "targets", "rec", "rec_yds", "rec_yds_per_rec", "rec_td", "two_pt_md", "two_pt_pass", "fantasy_points", "fantasy_points_ppr", "draftkings_points", "fanduel_points", "vbd", "fantasy_rank_pos", "fantasy_rank_overall"}
+##for f in features:
+##    for row in table.find_all("td", {"data-stat": f}):
+##        stat = row.find_all
+##        cell = row.find("td", {"data-stat": f})
+##        a = cell.text.strip().encode()
+##        text = a.decode("utf-8")
+##        if f in pre_df:
+##            pre_df[f].append(text)
+##        else:
+##            pre_df[f] = [text]
+# year_to_players_dict = {year: player_dict}
+# return column_headers
 
-#print(year_to_player_dict_creator(2017))
-        #df = pd.DataFrame.from_dict(pre_df)
-        #df["team"] = df["team"].apply()
+# print(year_to_player_dict_creator(2017))
+# df = pd.DataFrame.from_dict(pre_df)
+# df["team"] = df["team"].apply()
 
 
-
-                #a = cell.text.strip().encode()
-                #text = a.decode("utf-8")
-                #if f in pre_df
-
+# a = cell.text.strip().encode()
+# text = a.decode("utf-8")
+# if f in pre_df
 
 
 # This works. It produces the output: 'Todd Gurley*+'.
@@ -204,87 +275,85 @@ print(fantasy_df.head())
 # print(fantasy_2017['2017']['GurlTo01.htm'])
 
 
+## Strips the html and produces a list of header name strings.
+# headers = [headers_w_html[i].text for i in range(len(headers_w_html))]
 
+## Finds the 'tbody' tag in the soup (aka in all the page HTML).
+# html = soup.find('tbody')
 
-   ## Strips the html and produces a list of header name strings.
-   #headers = [headers_w_html[i].text for i in range(len(headers_w_html))]
+## Finds the 'td' tags in the 'html' object above, places them in a list
+# children = html.find_all('td')
 
-   ## Finds the 'tbody' tag in the soup (aka in all the page HTML).
-   #html = soup.find('tbody')
+## Creates a list of just the text in the object 'children'
+# items = [i.text for i in children]
 
-   ## Finds the 'td' tags in the 'html' object above, places them in a list
-   #children = html.find_all('td')
+## Strips the white space off either side of the text in 'items'.
+# stripped = [i.strip() for i in items]
 
-   ## Creates a list of just the text in the object 'children'
-   #items = [i.text for i in children]
+# rankings_w_zeros = [stripped[rank] or "0" for rank in range(len(stripped))]
 
-   ## Strips the white space off either side of the text in 'items'.
-   #stripped = [i.strip() for i in items]
+## 'stripped' is a list of between roughly 500 and 3,000 strings -- every cell item for every team.
+## This line of code splits this long list into separate lists for each team. It does so by iterating through the
+## 'stripped' and splitting it into lists with the same number of objects as the header list.
+## This is what makes the function work for any table.
+# teams = [rankings_w_zeros[i:i + len(headers)] for i in range(0, len(rankings_w_zeros), len(headers))]
 
-   #rankings_w_zeros = [stripped[rank] or "0" for rank in range(len(stripped))]
+## This takes each item in the headers list and makes it a key, then takes the each of the lists in 'teams' and
+## distributes their objects to len(headers) lists, which make up the values associated with each
+## header key.
+# headers_values_dict = {}
 
-   ## 'stripped' is a list of between roughly 500 and 3,000 strings -- every cell item for every team.
-   ## This line of code splits this long list into separate lists for each team. It does so by iterating through the
-   ## 'stripped' and splitting it into lists with the same number of objects as the header list.
-   ## This is what makes the function work for any table.
-   #teams = [rankings_w_zeros[i:i + len(headers)] for i in range(0, len(rankings_w_zeros), len(headers))]
+# for h in range(len(headers)):
+#    headers_values_dict[headers[h]] = [i[h] for i in teams]
 
-   ## This takes each item in the headers list and makes it a key, then takes the each of the lists in 'teams' and
-   ## distributes their objects to len(headers) lists, which make up the values associated with each
-   ## header key.
-   #headers_values_dict = {}
+## This uses pandas to put the headers_values_dict into a dataframe with each header string as the headers
+## and each value item as the components.
+# table = pd.DataFrame(data=headers_values_dict)
 
-   #for h in range(len(headers)):
-   #    headers_values_dict[headers[h]] = [i[h] for i in teams]
+## Finally, this generates the .csv file and saves it in the current working drive.
+## return table.to_csv("{}.csv".format(page_title))
 
-   ## This uses pandas to put the headers_values_dict into a dataframe with each header string as the headers
-   ## and each value item as the components.
-   #table = pd.DataFrame(data=headers_values_dict)
-
-   ## Finally, this generates the .csv file and saves it in the current working drive.
-   ## return table.to_csv("{}.csv".format(page_title))
-
-    ##def find_hero_ranking_urls(url):
-    ##    site_byte = urllib.request.urlopen(url).read()
-    ##
-    ##    # Takes the site bytes and turns them into a bs4.BeautifulSoup object, which looks like html,
-    ##    # and reads like it if the .prettify() method is applied.
-    ##
-    ##    soup = bs.BeautifulSoup(site_byte, 'lxml')
-    ##
-    ##    rankings = soup.find('div', class_="team-list mCustomScrollbar")
-    ##
-    ##    rankings_soup = bs.BeautifulSoup(str(rankings), 'lxml')
-    ##
-    ##    dictionary = {}
-    ##    for link in rankings_soup.find_all('a'):
-    ##        dictionary[link.get('title')] = link.get('href')
-    ##
-    ##    dict_keys = dictionary.keys()
-    ##
-    ##    reduced_keys = []
-    ##
-    ##    for i in dict_keys:
-    ##        if 'D1' in i[0:2]:
-    ##            reduced_keys.append(i)
-    ##        elif "D2" in i[0:2]:
-    ##            reduced_keys.append(i)
-    ##        elif 'D3' in i[0:2]:
-    ##            reduced_keys.append(i)
-    ##        elif 'FBS' in i[0:3]:
-    ##            reduced_keys.append(i)
-    ##        elif 'FCS' in i[0:3]:
-    ##            reduced_keys.append(i)
-    ##
-    ##    reduced_dictionary = {k: dictionary[k] for k in reduced_keys if k in dictionary}
-    ##
-    ##    return reduced_dictionary
-    ##
-    ##
-    ##url_dict = find_hero_ranking_urls('https://herosports.com/')
-    ##
-    ##for k, v in url_dict.items():
-    ##    print("{}: {}".format(k, v))
-    ##
-    ### for k, v in url_dict.items():
-    ###    rankings_scraper(k, v)
+##def find_hero_ranking_urls(url):
+##    site_byte = urllib.request.urlopen(url).read()
+##
+##    # Takes the site bytes and turns them into a bs4.BeautifulSoup object, which looks like html,
+##    # and reads like it if the .prettify() method is applied.
+##
+##    soup = bs.BeautifulSoup(site_byte, 'lxml')
+##
+##    rankings = soup.find('div', class_="team-list mCustomScrollbar")
+##
+##    rankings_soup = bs.BeautifulSoup(str(rankings), 'lxml')
+##
+##    dictionary = {}
+##    for link in rankings_soup.find_all('a'):
+##        dictionary[link.get('title')] = link.get('href')
+##
+##    dict_keys = dictionary.keys()
+##
+##    reduced_keys = []
+##
+##    for i in dict_keys:
+##        if 'D1' in i[0:2]:
+##            reduced_keys.append(i)
+##        elif "D2" in i[0:2]:
+##            reduced_keys.append(i)
+##        elif 'D3' in i[0:2]:
+##            reduced_keys.append(i)
+##        elif 'FBS' in i[0:3]:
+##            reduced_keys.append(i)
+##        elif 'FCS' in i[0:3]:
+##            reduced_keys.append(i)
+##
+##    reduced_dictionary = {k: dictionary[k] for k in reduced_keys if k in dictionary}
+##
+##    return reduced_dictionary
+##
+##
+##url_dict = find_hero_ranking_urls('https://herosports.com/')
+##
+##for k, v in url_dict.items():
+##    print("{}: {}".format(k, v))
+##
+### for k, v in url_dict.items():
+###    rankings_scraper(k, v)
