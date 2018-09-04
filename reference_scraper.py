@@ -58,30 +58,26 @@ def extract_player_data(table_rows_variable):
     """
     # Create the emply list to store the player data
     player_data = []
-    for row in table_rows_variable:  # for each row, do the following:
-        # Get the text for each table data (td) element in the row
-        # Some player names end with
+    for row in table_rows_variable:  # For each row, do the following:
+        # 1. Get the text for each table data (td) element in the row
+        # 2. Remove the *, +, or *+ from the end of players' names (if applicable). This information
+        # indicates pro bowl/all pro status, and I don't need that right now.##TODO consider turning that data into another row.
         player_list = [
             td.get_text()[:-2] if td.get_text().endswith("*+") else td.get_text()[:-1] if td.get_text().endswith(
                 "+") or td.get_text().endswith("*") else td.get_text() for td in row.find_all("td")]
-        # there are some empty table rows, which are the repeated
-        # column headers in the table
-        # we skip over those rows and and continue the for loop
+        # There are some empty table rows, which are the repeated column headers in the table.
+        # We want our function to skip over those rows and and continue the for loop.
         if not player_list:
             continue
-            # Extracting the player links
-            # Instead of a list we create a dictionary, this way we can easily
-            # match the player name with their pfr url
-            # For all "a" elements in the row, get the text
-            # NOTE: Same " HOF" text issue as the player_list above
+            # Extracting the player links:
+            # Instead of a list we create a dictionary, this way we can easily match the player name with their pfr url.
+            # For all "a" elements in the row, get the text and add it to the list in the dictionary value.
         links_dict = {(link.get_text()): link["href"] for link in row.find_all("a", href=True)}
-        player_list.insert(0, '')  # TODO figure out why this is even necessary. I have an "Rk" table header,
-        # but no data for it.
+        player_list.insert(0, '')  # TODO figure out why this is even necessary. I have an "Rk" table header, but no data for it.
         player_list.append(links_dict.get(player_list[1], ""))
         player_list.append(links_dict.get(player_list[2], ""))
         player_data.append(player_list)
     return player_data
-
 
 # data = extract_player_data(table_rows)
 
@@ -91,21 +87,23 @@ season_dfs_list = []
 
 errors_list = []
 
+# Lucky for us, Sports Reference's URLs are sensical, and they use the same, simple, easy to understand framework for all of them.
 url_template = "https://www.pro-football-reference.com/years/{year}/fantasy.htm"
-# for each year from 2000 to (and including) 2017
+
+# For each year from 2000 to (and including) 2017:
 for year in range(2000, 2018):
     # Using try/except block to catch and inspect any urls that cause an error
     try:
-        # get the season URL
+        # Get the season URL
         url = url_template.format(year=year)
 
-        # get the html
+        # Get the html
         html = urllib.request.urlopen(url)
 
-        # create the beautiful soup object
+        # Create the beautiful soup object
         soup = bs.BeautifulSoup(html, 'lxml')
 
-        # get column headers
+        # Get column headers, and basically change all of them.
         column_headers = [th.getText() for th in soup.findAll('tr', limit=2)[1].findAll('th')]
         column_headers[1] = 'Player'
         column_headers[2] = 'Team'
@@ -131,105 +129,120 @@ for year in range(2000, 2018):
         column_headers[26] = 'FanDuel_Pts'
         column_headers.extend(["player_nfl_link", "player_team_link"])
 
-        # select the data from the tale using the '#fantasy tr' CSS selector
+        # Select the data from the table using the '#fantasy tr' CSS selector
         table_rows = soup.select("#fantasy tr")
 
-        # extract player data from the table rows
+        # Extract player data from the table rows:
         player_data = extract_player_data(table_rows)
 
-        # create the dataframe for the current fantasy season
+        # Create the dataframe for the current fantasy season:
         year_df = pd.DataFrame(player_data, columns=column_headers)
 
-        # add the year of the season to the dataframe
+        # Add the year of the season to the current year's dataframe:
         year_df.insert(0, "Season", year)
         year_df_list = year_df.values.tolist()
-        print(year_df_list[1])
-        # append the current dataframe to the list of dataframes
+        print(year_df_list[1]) # This was a verification step I left in place because it shows the progress of the function -- hhow long it takes.
+        # Append the current dataframe to the list of dataframes
         season_dfs_list.append(year_df)
 
     except Exception as e:
-        # store the url and the error it causes in a list
+        # Store the url and the error it causes in a list
         error = [url, e]
-        # then append it to the list of errors
+        # Then append it to the list of errors
         errors_list.append(error)
 
+# Store all seasons in a single dataframe:
 fantasy_df = pd.concat(season_dfs_list, ignore_index=True)
 
-conn = sqlite3.connect('fantasy_football_since_2000.db')
 
-c = conn.cursor()
+# Everything below creates the sqlite3 database. I'm not sure why it doesn't auto-update/auto-populate the database on the right, but it does work. Might be something to do with the .close() method?
+#conn = sqlite3.connect('fantasy_football_since_2000.db')
 
-c.execute("""CREATE TABLE IF NOT EXISTS fantasy_football2 (
-            Season integer,
-            Rk integer,
-            Player text,
-            Team text,
-            Position text,
-            Age integer,
-            G integer,
-            GS integer,
-            Pass_Cmp integer,
-            Pass_Att integer,
-            Pass_Yds integer,
-            Pass_TD integer,
-            Rush_Att integer,
-            Rush_Yds integer,
-            Rush_YpA real,
-            Rush_TD integer,
-            Rec_Tgt integer,
-            Rec integer,
-            Rec_Yds integer,
-            Rec_YpR real,
-            Rec_TD integer,
-            Two_Pt_Made integer,
-            Two_Pt_Pass integer,
-            Fantasy_Pts real,
-            PPR_Pts real,
-            DraftKings_Pts real,
-            FanDuel_Pts real,
-            VBD integer,
-            PosRank integer,
-            OvRank integer,
-            player_nfl_link text,
-            player_team_link text
-)""")
+#c = conn.cursor()
+
+#c.execute("""CREATE TABLE IF NOT EXISTS fantasy_football (
+#            Season integer,
+#            Rk integer,
+#            Player text,
+#            Team text,
+#            Position text,
+#            Age integer,
+#            G integer,
+#            GS integer,
+#            Pass_Cmp integer,
+#            Pass_Att integer,
+#            Pass_Yds integer,
+#            Pass_TD integer,
+#            Rush_Att integer,
+#            Rush_Yds integer,
+#            Rush_YpA real,
+#            Rush_TD integer,
+#            Rec_Tgt integer,
+#            Rec integer,
+#            Rec_Yds integer,
+#            Rec_YpR real,
+#            Rec_TD integer,
+#            Two_Pt_Made integer,
+#            Two_Pt_Pass integer,
+#            Fantasy_Pts real,
+#            PPR_Pts real,
+#            DraftKings_Pts real,
+#            FanDuel_Pts real,
+#            VBD integer,
+#            PosRank integer,
+#            OvRank integer,
+#            player_nfl_link text,
+#            player_team_link text
+#)""")
+#
+#
+#fantasy_df.to_sql(name='fantasy_football', con=conn, if_exists='replace', index=False, dtype={'Season': 'integer',
+#            'Rk': 'integer',
+#            'Player': 'text',
+#            'Team': 'text',
+#            'Position': 'text',
+#            'Age': 'integer',
+#            'G': 'integer',
+#            'GS': 'integer',
+#            'Pass_Cmp': 'integer',
+#            'Pass_Att': 'integer',
+#            'Pass_Yds': 'integer',
+#            'Pass_TD': 'integer',
+#            'Rush_Att': 'integer',
+#            'Rush_Yds': 'integer',
+#            'Rush_YpA': 'real',
+#            'Rush_TD': 'integer',
+#            'Rec_Tgt': 'integer',
+#            'Rec': 'integer',
+#            'Rec_Yds': 'integer',
+#            'Rec_YpR': 'real',
+#            'Rec_TD': 'integer',
+#            'Two_Pt_Made': 'integer',
+#            'Two_Pt_Pass': 'integer',
+#            'Fantasy_Pts': 'real',
+#            'PPR_Pts': 'real',
+#            'DraftKings_Pts': 'real',
+#            'FanDuel_Pts': 'real',
+#            'VBD': 'integer',
+#            'PosRank': 'integer',
+#            'OvRank': 'integer',
+#            'player_nfl_link': 'text',
+#            'player_team_link': 'text'})
+#c.close()
 
 
-fantasy_df.to_sql(name='fantasy_football', con=conn, if_exists='replace', index=False, dtype={'Season': 'intiger',
-            'Rk': 'integer',
-            'Player': 'text',
-            'Team': 'text',
-            'Position': 'text',
-            'Age': 'integer',
-            'G': 'integer',
-            'GS': 'integer',
-            'Pass_Cmp': 'integer',
-            'Pass_Att': 'integer',
-            'Pass_Yds': 'integer',
-            'Pass_TD': 'integer',
-            'Rush_Att': 'integer',
-            'Rush_Yds': 'integer',
-            'Rush_YpA': 'real',
-            'Rush_TD': 'integer',
-            'Rec_Tgt': 'integer',
-            'Rec': 'integer',
-            'Rec_Yds': 'integer',
-            'Rec_YpR': 'real',
-            'Rec_TD': 'integer',
-            'Two_Pt_Made': 'integer',
-            'Two_Pt_Pass': 'integer',
-            'Fantasy_Pts': 'real',
-            'PPR_Pts': 'real',
-            'DraftKings_Pts': 'real',
-            'FanDuel_Pts': 'real',
-            'VBD': 'integer',
-            'PosRank': 'integer',
-            'OvRank': 'integer',
-            'player_nfl_link': 'text',
-            'player_team_link': 'text'})
-c.close()
 
 
+###############################################################################
+##############################           ######################################
+##########################                  ###################################
+######################### THE CODE GRAVEYARD ##################################
+#########################                    ##################################
+#########################   RIP SHITTY CODE  ##################################
+#########################      2018-2018     ##################################
+#########################                    ##################################
+#########################                    ##################################
+#########################                    ##################################
 
 # player_dict = dict()
 # team_dict = dict()
@@ -273,87 +286,3 @@ c.close()
 # This works. It produces the output: 'Todd Gurley*+'.
 # fantasy_2017 = year_to_player_dict_creator('2017')
 # print(fantasy_2017['2017']['GurlTo01.htm'])
-
-
-## Strips the html and produces a list of header name strings.
-# headers = [headers_w_html[i].text for i in range(len(headers_w_html))]
-
-## Finds the 'tbody' tag in the soup (aka in all the page HTML).
-# html = soup.find('tbody')
-
-## Finds the 'td' tags in the 'html' object above, places them in a list
-# children = html.find_all('td')
-
-## Creates a list of just the text in the object 'children'
-# items = [i.text for i in children]
-
-## Strips the white space off either side of the text in 'items'.
-# stripped = [i.strip() for i in items]
-
-# rankings_w_zeros = [stripped[rank] or "0" for rank in range(len(stripped))]
-
-## 'stripped' is a list of between roughly 500 and 3,000 strings -- every cell item for every team.
-## This line of code splits this long list into separate lists for each team. It does so by iterating through the
-## 'stripped' and splitting it into lists with the same number of objects as the header list.
-## This is what makes the function work for any table.
-# teams = [rankings_w_zeros[i:i + len(headers)] for i in range(0, len(rankings_w_zeros), len(headers))]
-
-## This takes each item in the headers list and makes it a key, then takes the each of the lists in 'teams' and
-## distributes their objects to len(headers) lists, which make up the values associated with each
-## header key.
-# headers_values_dict = {}
-
-# for h in range(len(headers)):
-#    headers_values_dict[headers[h]] = [i[h] for i in teams]
-
-## This uses pandas to put the headers_values_dict into a dataframe with each header string as the headers
-## and each value item as the components.
-# table = pd.DataFrame(data=headers_values_dict)
-
-## Finally, this generates the .csv file and saves it in the current working drive.
-## return table.to_csv("{}.csv".format(page_title))
-
-##def find_hero_ranking_urls(url):
-##    site_byte = urllib.request.urlopen(url).read()
-##
-##    # Takes the site bytes and turns them into a bs4.BeautifulSoup object, which looks like html,
-##    # and reads like it if the .prettify() method is applied.
-##
-##    soup = bs.BeautifulSoup(site_byte, 'lxml')
-##
-##    rankings = soup.find('div', class_="team-list mCustomScrollbar")
-##
-##    rankings_soup = bs.BeautifulSoup(str(rankings), 'lxml')
-##
-##    dictionary = {}
-##    for link in rankings_soup.find_all('a'):
-##        dictionary[link.get('title')] = link.get('href')
-##
-##    dict_keys = dictionary.keys()
-##
-##    reduced_keys = []
-##
-##    for i in dict_keys:
-##        if 'D1' in i[0:2]:
-##            reduced_keys.append(i)
-##        elif "D2" in i[0:2]:
-##            reduced_keys.append(i)
-##        elif 'D3' in i[0:2]:
-##            reduced_keys.append(i)
-##        elif 'FBS' in i[0:3]:
-##            reduced_keys.append(i)
-##        elif 'FCS' in i[0:3]:
-##            reduced_keys.append(i)
-##
-##    reduced_dictionary = {k: dictionary[k] for k in reduced_keys if k in dictionary}
-##
-##    return reduced_dictionary
-##
-##
-##url_dict = find_hero_ranking_urls('https://herosports.com/')
-##
-##for k, v in url_dict.items():
-##    print("{}: {}".format(k, v))
-##
-### for k, v in url_dict.items():
-###    rankings_scraper(k, v)
