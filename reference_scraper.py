@@ -21,8 +21,8 @@ import seaborn as sns
 # def year_to_player_dict_creator(year##TODO if you want to make this a function, which you do, you need to change this back to a variable.):
 
 site_byte = urllib.request.urlopen("https://www.pro-football-reference.com/years/{}/fantasy.htm".format(2017)).read()
-soup = bs.BeautifulSoup(site_byte, 'lxml')
-column_headers = [th.getText() for th in soup.findAll('tr', limit=2)[1].findAll('th')]
+soup = bs.BeautifulSoup(site_byte, "lxml")
+column_headers = [th.getText() for th in soup.findAll("tr", limit=2)[1].findAll("th")]
 column_headers[1] = 'Player'
 column_headers[2] = 'Team'
 column_headers[3] = 'Position'
