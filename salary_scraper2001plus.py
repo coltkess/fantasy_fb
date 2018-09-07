@@ -1,15 +1,47 @@
 import bs4 as bs
 import urllib.request
 import pandas as pd
-
+import numpy as np
 
 #ppp = ['bills', 'colts', 'dolphins', 'pats', 'jets', 'ravens', 'bengals', 'browns', 'jaguars', 'steelers', 'titans', 'broncos', 'chiefs', 'raiders', 'chargers', 'seahawks', 'cards', 'cowboys', 'giants', 'eagles', 'redskins', 'bears', 'lions', 'packers', 'vikings', 'bucs', 'falcons', 'panthers', 'saints', 'rams', 'niners']
 #team_names = sorted(ppp)
 #print(len(team_names))
-usa_today_byte = urllib.request.urlopen("https://www.usatoday.com/sports/nfl/salaries/2001/player/all/")
-soup = bs.BeautifulSoup(usa_today_byte, 'lxml')
+import requests
 
-print(soup.prettify())
+import user_agents.txt
+
+def get_random_ua():
+    random_ua = ''
+    ua_file = 'user_agents.txt'
+    try:
+        with open(ua_file) as f:
+            lines = f.readlines()
+        if len(lines) > 0:
+            prng = np.random.RandomState()
+            index = prng.permutation(len(lines) - 1)
+            idx = np.asarray(index, dtype=np.integer)[0]
+            random_ua = lines[int(idx)]
+    except Exception as ex:
+        print('Exception in random_ua')
+        print(str(ex))
+    finally:
+        return random_ua
+
+print(get_random_ua())
+
+print(get_random_ua())
+
+
+
+
+#headers = requests.utils.default_headers()
+#headers.update({
+#    'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
+#})
+#usa_today_byte = urllib.request.urlopen("https://www.usatoday.com/sports/nfl/salaries/2001/player/all/")
+#soup = bs.BeautifulSoup(usa_today_byte, 'lxml')
+
+#print(soup.prettify())
 #table = soup.select("#DataTables_Table_0")
 #table_soup = bs.BeautifulSoup(str(table), 'lxml')
 #print(table_soup.prettify())
