@@ -90,6 +90,8 @@ errors_list = []
 # Lucky for us, Sports Reference's URLs are sensical, and they use the same, simple, easy to understand framework for all of them.
 url_template = "https://www.pro-football-reference.com/years/{year}/fantasy.htm"
 
+u = []
+
 # For each year from 2000 to (and including) 2017:
 for year in range(2000, 2018):
     # Using try/except block to catch and inspect any urls that cause an error
