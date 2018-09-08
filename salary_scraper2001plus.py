@@ -6,70 +6,64 @@ import numpy as np
 #ppp = ['bills', 'colts', 'dolphins', 'pats', 'jets', 'ravens', 'bengals', 'browns', 'jaguars', 'steelers', 'titans', 'broncos', 'chiefs', 'raiders', 'chargers', 'seahawks', 'cards', 'cowboys', 'giants', 'eagles', 'redskins', 'bears', 'lions', 'packers', 'vikings', 'bucs', 'falcons', 'panthers', 'saints', 'rams', 'niners']
 #team_names = sorted(ppp)
 #print(len(team_names))
-import requests
 
-import user_agents.txt
+column_headers = ['Year', 'Team', 'Salary', 'Signing Bonus', 'Roster Bonus', 'Workout Bonus', 'Restructure Bonus', 'Option Bonus', 'Incentive', 'Total Cash']
 
-def get_random_ua():
-    random_ua = ''
-    ua_file = 'user_agents.txt'
-    try:
-        with open(ua_file) as f:
-            lines = f.readlines()
-        if len(lines) > 0:
-            prng = np.random.RandomState()
-            index = prng.permutation(len(lines) - 1)
-            idx = np.asarray(index, dtype=np.integer)[0]
-            random_ua = lines[int(idx)]
-    except Exception as ex:
-        print('Exception in random_ua')
-        print(str(ex))
-    finally:
-        return random_ua
+spotrac_url = ("https://www.spotrac.com/nfl/atlanta-falcons/{}/cash-earnings/")
 
-print(get_random_ua())
-
-print(get_random_ua())
+def fetch_soup(first_last_num):
+    spotrac_byte = urllib.request.urlopen(spotrac_url.format(first_last_num))
+    soup = bs.BeautifulSoup(spotrac_byte, 'lxml')
+    table = soup.find("table", class_="earningstable")
+    table_soup = bs.BeautifulSoup(str(table), 'lxml')
+    return table_soup
 
 
+def extract_player_data(table_rows_variable):
+    """
+    Extract and return the desired information from the td elements within the table rows.
+    :param table_rows_variable:
+    :return:
+    """
+    # Create the empty list to store the player data
+    player_data = []
+    for row in table_rows_variable:  # For each row, do the following:
+        # 1. Get the text for each table data (td) element in the row
+        player_list = [td.get_text() for td in row.find_all("td")]
+        # There are some empty table rows, which are the repeated column headers in the table.
+        # We want our function to skip over those rows and and continue the for loop.
+        if not player_list:
+            continue
+            # Extracting the player links:
+        player_data.append(player_list)
+    return player_data
 
 
-#headers = requests.utils.default_headers()
-#headers.update({
-#    'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
-#})
-#usa_today_byte = urllib.request.urlopen("https://www.usatoday.com/sports/nfl/salaries/2001/player/all/")
-#soup = bs.BeautifulSoup(usa_today_byte, 'lxml')
+matt_ryan = extract_player_data(table_soup)
 
-#print(soup.prettify())
-#table = soup.select("#DataTables_Table_0")
-#table_soup = bs.BeautifulSoup(str(table), 'lxml')
-#print(table_soup.prettify())
-#r5 = [b.getText().split() for b in table_soup.findAll("tr", limit=1)]
-#column_headers = r5[0]
+def chunks(lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i:i+n]
 
 
-# def extract_player_data(table_rows_variable):
-#     """
-#     Extract and return the desired information from the td elements within the table rows.
-#     :param table_rows_variable:
-#     :return:
-#     """
-#     # Create the emply list to store the player data
-#     player_data = []
-#     for row in table_rows_variable:  # For each row, do the following:
-#         # 1. Get the text for each table data (td) element in the row
-#         player_list = [td.get_text() for td in row.find_all("td")]
-#         # There are some empty table rows, which are the repeated column headers in the table.
-#         # We want our function to skip over those rows and and continue the for loop.
-#         if not player_list:
-#             continue
-#             # Extracting the player links:
-#         player_data.append(player_list)
-#     return player_data
-#
-#
-#
+ryan_chunks = list(chunks(matt_ryan[0], 10))
+
+print(ryan_chunks)
+
+ryan_today = []
+
+for i in range(len(ryan_chunks)):
+    ryan_today.append(ryan_chunks[i])
+    if ryan_chunks[i][0] == '2018':
+        break
+
+print(ryan_today)
+
+matt_ryan_db = pd.DataFrame(ryan_today, columns=column_headers)
+
+print(matt_ryan_db.tail())
+
+
 # team_df_list = []
 #
 # season_dfs_list = []

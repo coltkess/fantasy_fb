@@ -1,4 +1,3 @@
-from Cleaning_the_Data import fantasy_df
 import bs4 as bs
 import urllib.request
 import pandas as pd
