@@ -59,6 +59,7 @@ def get_player_ids(team):
         teams_dict[team] = player_ids_dict
 
 
+
 errors_list = []
 
 for team in team_codes:
