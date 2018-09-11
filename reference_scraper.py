@@ -56,7 +56,7 @@ def extract_player_data(table_rows_variable):
     :param table_rows_variable:
     :return:
     """
-    # Create the emply list to store the player data
+    # Create the empty list to store the player data
     player_data = []
     for row in table_rows_variable:  # For each row, do the following:
         # 1. Get the text for each table data (td) element in the row
@@ -196,39 +196,39 @@ fantasy_df = pd.concat(season_dfs_list, ignore_index=True)
 #)""")
 #
 #
-#fantasy_df.to_sql(name='fantasy_football', con=conn, if_exists='replace', index=False, dtype={'Season': 'integer',
-#            'Rk': 'integer',
-#            'Player': 'text',
-#            'Team': 'text',
-#            'Position': 'text',
-#            'Age': 'integer',
-#            'G': 'integer',
-#            'GS': 'integer',
-#            'Pass_Cmp': 'integer',
-#            'Pass_Att': 'integer',
-#            'Pass_Yds': 'integer',
-#            'Pass_TD': 'integer',
-#            'Rush_Att': 'integer',
-#            'Rush_Yds': 'integer',
-#            'Rush_YpA': 'real',
-#            'Rush_TD': 'integer',
-#            'Rec_Tgt': 'integer',
-#            'Rec': 'integer',
-#            'Rec_Yds': 'integer',
-#            'Rec_YpR': 'real',
-#            'Rec_TD': 'integer',
-#            'Two_Pt_Made': 'integer',
-#            'Two_Pt_Pass': 'integer',
-#            'Fantasy_Pts': 'real',
-#            'PPR_Pts': 'real',
-#            'DraftKings_Pts': 'real',
-#            'FanDuel_Pts': 'real',
-#            'VBD': 'integer',
-#            'PosRank': 'integer',
-#            'OvRank': 'integer',
-#            'player_nfl_link': 'text',
-#            'player_team_link': 'text'})
-#c.close()
+fantasy_df.to_sql(name='fantasy_football', con=conn, if_exists='replace', index=False, dtype={'Season': 'integer',
+           'Rk': 'integer',
+           'Player': 'text',
+           'Team': 'text',
+           'Position': 'text',
+           'Age': 'integer',
+           'G': 'integer',
+           'GS': 'integer',
+           'Pass_Cmp': 'integer',
+           'Pass_Att': 'integer',
+           'Pass_Yds': 'integer',
+           'Pass_TD': 'integer',
+           'Rush_Att': 'integer',
+           'Rush_Yds': 'integer',
+           'Rush_YpA': 'real',
+           'Rush_TD': 'integer',
+           'Rec_Tgt': 'integer',
+           'Rec': 'integer',
+           'Rec_Yds': 'integer',
+           'Rec_YpR': 'real',
+           'Rec_TD': 'integer',
+           'Two_Pt_Made': 'integer',
+           'Two_Pt_Pass': 'integer',
+           'Fantasy_Pts': 'real',
+           'PPR_Pts': 'real',
+           'DraftKings_Pts': 'real',
+           'FanDuel_Pts': 'real',
+           'VBD': 'integer',
+           'PosRank': 'integer',
+           'OvRank': 'integer',
+           'player_nfl_link': 'text',
+           'player_team_link': 'text'})
+c.close()
 
 
 
