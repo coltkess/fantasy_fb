@@ -148,46 +148,58 @@ import sqlite3
 pickle_in = open("current_player_salaries.pickle", "rb")
 current_player_salaries = pickle.load(pickle_in)
 
-alias_for_jupyter = current_player_salaries
+# current_player_salaries.Total_Cash = current_player_salaries.Total_Cash.str.replace('$', '')
+# current_player_salaries.Total_Cash = current_player_salaries.Total_Cash.str.replace(',', '')
+#
+# current_player_salaries.Salary = current_player_salaries.Salary.str.replace('$', '')
+# current_player_salaries.Salary = current_player_salaries.Salary.str.replace(',', '')
+# current_player_salaries.Salary = current_player_salaries.Salary.str.replace('-', '')
+#
+# current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace('$', '')
+# current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace(',', '')
+# current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace('-', '')
+#
+# current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace('$', '')
+# current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace(',', '')
+# current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace('-', '')
+#
+# current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace('$', '')
+# current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace(',', '')
+# current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace('-', '')
+#
+# current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace('$', '')
+# current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace(',', '')
+# current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace('-', '')
+#
+# current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace('$', '')
+# current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace(',', '')
+# current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace('-', '')
+#
+# current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace('$', '')
+# current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace(',', '')
+# current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace('-', '')
 
-current_player_salaries.Total_Cash = current_player_salaries.Total_Cash.str.replace('$', '')
-current_player_salaries.Total_Cash = current_player_salaries.Total_Cash.str.replace(',', '')
+print(current_player_salaries.Team.unique())
 
-current_player_salaries.Salary = current_player_salaries.Salary.str.replace('$', '')
-current_player_salaries.Salary = current_player_salaries.Salary.str.replace(',', '')
-current_player_salaries.Salary = current_player_salaries.Salary.str.replace('-', '')
+clean_current_salaries = current_player_salaries.replace(to_replace={'arizona2': 'ARI', 'patriots': 'NWE', 'rams2': 'LAR', 'eagles1': 'PHI', 'vikings': 'MIN', 'bengals': 'CIN', '49erslogo': 'SFO', 'colts': 'IND', 'oakland': 'OAK', 'browns': 'CLE', 'nygiants': 'NYG', 'panthers': 'CAR', 'falcons': 'ATL', 'bucs': 'TAM', 'bears': 'CHI', 'dolphins': 'MIA', 'svg_': 'LAC', 'hawks3': 'SEA', 'dallas': 'DAL', 'ravens': 'BAL', 'lions': 'DET', 'broncos': 'DEN', 'buffalo': 'BUF',
+ 'neworleans': 'NOR', 'packers': 'GNB', 'washington': 'WAS', 'kansascity': 'KAN', 'tennessee': 'TEN', 'texans': 'HOU', 'chargers2': 'SDG', 'jets': 'NYJ', 'jaguars': 'JAX', 'rams3': 'STL', 'Pittsburgh-Steelers-logo-psd22874': 'PIT'})
 
-current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace('$', '')
-current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace(',', '')
-current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace('-', '')
+print(clean_current_salaries.Team.unique())
 
-current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace('$', '')
-current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace(',', '')
-current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace('-', '')
+clean_current_salaries['my_id'] = clean_current_salaries.Player_Name.replace(' ', '_').astype(str).str.cat(clean_current_salaries.Year.astype(str), sep='_').str.cat(clean_current_salaries.Team.astype(str), sep='_')
 
-current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace('$', '')
-current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace(',', '')
-current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace('-', '')
+print(clean_current_salaries.head())
 
-current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace('$', '')
-current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace(',', '')
-current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace('-', '')
+# ['STL' 'IND' 'MIN' 'SFO' 'TEN' 'KAN' 'DEN' 'OAK' 'GNB' 'JAX' 'BAL' 'PHI'
+#  'NYJ' 'SEA' 'MIA' 'WAS' 'NYG' 'NOR' 'DET' 'TAM' 'BUF' 'CIN' 'SDG' 'ARI'
+#  'CAR' 'PIT' 'DAL' 'ATL' 'NWE' 'CHI' 'CLE' '2TM' 'HOU' '3TM' '4TM' 'LAR'
+#  'LAC']
 
-current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace('$', '')
-current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace(',', '')
-current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace('-', '')
 
-current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace('$', '')
-current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace(',', '')
-current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace('-', '')
-
-print(current_player_salaries.head())
-
-conn = sqlite3.connect('player_salaries')
-
+conn = sqlite3.connect('/Users/coltkess/PycharmProjects/fantasy_fb_contract_year/player_salaries')
 c = conn.cursor()
 
-current_player_salaries.to_sql(name='salary_info', con=conn, if_exists='replace', index=False, dtype={'Player_Name': 'text',
+clean_current_salaries.to_sql(name='salary_info', con=conn, if_exists='replace', index=False, dtype={'Player_Name': 'text',
         'Spotrac_ID': 'text',
         'Year': 'integer',
         'Team': 'text',
@@ -198,27 +210,11 @@ current_player_salaries.to_sql(name='salary_info', con=conn, if_exists='replace'
         'Restructure_Bonus': 'integer',
         'Option_Bonus': 'integer',
         'Incentive': 'integer',
-        'Total_Cash': 'integer'})
+        'Total_Cash': 'integer'
+        'my_id'
+})
 c.close()
 
-# def create_table():
-#    c.execute("""CREATE TABLE salary_info (
-#                Player_Name text,
-#                Spotrac_ID text,
-#                Year integer,
-#                Team text,
-#                Salary integer,
-#                Signing_Bonus integer,
-#                Roster_Bonus integer,
-#                Workout_Bonus integer,
-#                Restructure_Bonus integer,
-#                Option_Bonus integer,
-#                Incentive integer,
-#                Total_Cash integer
-#    )""")
-#    c.close()
-#
-# create_table()
 
 # def insert_player(dataframe):
 #    with conn:
