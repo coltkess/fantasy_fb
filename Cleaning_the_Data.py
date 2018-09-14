@@ -10,7 +10,7 @@ import pandas as pd
 pickle_in = open("fantasy.pickle", "rb")
 fantasy_df = pickle.load(pickle_in)
 
-
+print(fantasy_df.Team.unique())
 # First lets create a separate DataFrame that contains the player names, their player page links, and the player ID on Pro-Football-Reference. This way we can have a separate CSV file that just contains the necessary information to extract individual player data for Pro-Football-Reference sometime in the future.
 #
 # To extract the Pro-Football-Reference player ID from the player link, we will need to use a regular expression.

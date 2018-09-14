@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4a7299a-94c2-4008-96bc-5f098089faf1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d7c91b6-b5a2-4107-8354-6110e947ca1f.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/fantasy_notebook-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/fantasy_notebook-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/spotrac_scraper-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/spotrac_scraper-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cleaning_the_Data.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cleaning_the_Data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_football_since_2000.db" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_football_since_2000.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fantasy_notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy_notebook.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reference_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/reference_scraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salary_scraper2001plus.py" beforeDir="false" afterPath="$PROJECT_DIR$/salary_scraper2001plus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotrac_scraper.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/spotrac_scraper.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlite_cory.py" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite_cory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,9 +22,9 @@
     <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$sqlite_cory.coverage" NAME="sqlite_cory Coverage Results" MODIFIED="1536000040692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$reference_scraper.coverage" NAME="reference_scraper Coverage Results" MODIFIED="1536039303773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$salary_scraper.coverage" NAME="salary_scraper Coverage Results" MODIFIED="1536296317383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
-    <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$Cleaning_the_Data.coverage" NAME="Cleaning_the_Data Coverage Results" MODIFIED="1536536795013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$Cleaning_the_Data.coverage" NAME="Cleaning_the_Data Coverage Results" MODIFIED="1536725836066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$reference_scraper2.coverage" NAME="reference_scraper2 Coverage Results" MODIFIED="1535911149358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
-    <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$salary_scraper2001plus.coverage" NAME="salary_scraper2001plus Coverage Results" MODIFIED="1536644156510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$salary_scraper2001plus.coverage" NAME="salary_scraper2001plus Coverage Results" MODIFIED="1536888877514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/fantasy_fb_contract_year$medium_girls_scraper.coverage" NAME="medium_girls_scraper Coverage Results" MODIFIED="1535873919308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
   </component>
   <component name="DatabaseView">
@@ -59,32 +56,18 @@
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="fantasy_football_since_2000" type="feb32156:DbDataSourceImpl" />
+        <item name="full_db" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="full_db" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="full_db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
-        <item name="salary_info: table" type="ffe0bd85:SqliteImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="player_salaries" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="player_salaries" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="player_salaries" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="player_salaries" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
-        <item name="salary_info: table" type="ffe0bd85:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -98,29 +81,31 @@
     <session id="-1227783703">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cfg" value="2" />
           <entry key="db" value="1" />
-          <entry key="fantasy_football" value="7" />
+          <entry key="fantasy_football" value="8" />
           <entry key="fantasy_football2" value="3" />
           <entry key="fantasy_stats" value="3" />
-          <entry key="ipynb" value="9" />
+          <entry key="full_data_frame" value="1" />
+          <entry key="ipynb" value="10" />
           <entry key="json" value="2" />
           <entry key="my_test_table" value="1" />
           <entry key="null/admin/NCAA_Colleges" value="1" />
           <entry key="pstat" value="1" />
-          <entry key="py" value="36" />
-          <entry key="salary_info" value="8" />
-          <entry key="salary_info_1" value="2" />
-          <entry key="sql" value="23" />
+          <entry key="py" value="44" />
+          <entry key="salary_info" value="10" />
+          <entry key="salary_info_1" value="3" />
+          <entry key="sql" value="28" />
           <entry key="sqlite_master" value="2" />
           <entry key="txt" value="1" />
           <entry key="xml" value="3" />
@@ -128,16 +113,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Database Element" value="27" />
-          <entry key="IPNB" value="9" />
+          <entry key="Database Element" value="32" />
+          <entry key="IPNB" value="10" />
           <entry key="Ini" value="2" />
           <entry key="JSON" value="2" />
           <entry key="MONGO" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Profiler Session" value="1" />
-          <entry key="Python" value="35" />
-          <entry key="SQL" value="9" />
-          <entry key="Scratch" value="14" />
+          <entry key="Python" value="43" />
+          <entry key="SQL" value="11" />
+          <entry key="Scratch" value="17" />
           <entry key="UML" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -146,17 +131,17 @@
         <counts>
           <entry key="Python Console" value="23" />
           <entry key="dummy" value="4" />
-          <entry key="py" value="30106" />
-          <entry key="sql" value="790" />
-          <entry key="txt" value="2287" />
+          <entry key="py" value="31926" />
+          <entry key="sql" value="1047" />
+          <entry key="txt" value="2748" />
           <entry key="user_agents" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="2298" />
-          <entry key="Python" value="30079" />
-          <entry key="SQL" value="692" />
+          <entry key="PLAIN_TEXT" value="2759" />
+          <entry key="Python" value="31899" />
+          <entry key="SQL" value="949" />
           <entry key="Scratch" value="148" />
         </counts>
       </usages-collector>
@@ -169,26 +154,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reference_scraper.py">
+        <entry file="file://$PROJECT_DIR$/Cleaning_the_Data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="204" column="26" selection-start-line="204" selection-start-column="26" selection-end-line="204" selection-end-column="26" />
+            <state relative-caret-position="300">
+              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
               <folding>
-                <element signature="e#21#37#0" expanded="true" />
-                <marker date="1536641529370" expanded="true" signature="201:202" ph="..." />
-                <marker date="1536641529370" expanded="true" signature="1826:1831" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/salary_scraper2001plus.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="183" column="37" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,61 +175,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/salary_info">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <entry file="file://$PROJECT_DIR$/salary_scraper2000.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state>
-              <filtering enabled="true" />
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://5342873f-8713-4c4d-8252-cc5cf0aae74a/schema/main/table/salary_info.sql">
+        <entry file="file://$PROJECT_DIR$/salary_scraper2001plus.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/5342873f-8713-4c4d-8252-cc5cf0aae74a/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/fantasy_football">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/salary_pickle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="37" />
+            <state relative-caret-position="670">
+              <caret line="253" column="88" selection-start-line="253" selection-start-column="88" selection-end-line="253" selection-end-column="88" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#16#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sqlite_cory.py">
+        <entry file="das://1f85b999-49c0-40a7-8673-58216af18716/schema/main/table/full_data_frame">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+              <column-attributes>
+                <column name="Player" enabled="false" />
+              </column-attributes>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1f85b999-49c0-40a7-8673-58216af18716/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="268">
+              <caret line="49" column="984" selection-start-line="49" selection-start-column="984" selection-end-line="49" selection-end-column="984" />
             </state>
           </provider>
         </entry>
@@ -268,18 +221,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gonzaga</find>
-      <find>todd gur</find>
-      <find>table_rows</find>
-      <find>select</find>
-      <find>column_headers</find>
       <find>find_all</find>
       <find>sam bradford</find>
       <find>tbody</find>
@@ -305,6 +253,11 @@
       <find>cur</find>
       <find>header</find>
       <find>spotrac_url</find>
+      <find>stl</find>
+      <find>rams</find>
+      <find>insert</find>
+      <find>player_name</find>
+      <find>player_df_list</find>
     </findStrings>
   </component>
   <component name="Git.Rebase.Settings">
@@ -337,16 +290,17 @@
         <option value="$PROJECT_DIR$/user_agents.txt" />
         <option value="$PROJECT_DIR$/salary_scraper2000.py" />
         <option value="$PROJECT_DIR$/user_agents" />
-        <option value="$PROJECT_DIR$/spotrac_scraper.ipynb" />
-        <option value="$PROJECT_DIR$/Cleaning_the_Data.py" />
-        <option value="$PROJECT_DIR$/sqlite_cory.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a18ab66f-6848-47e6-8022-a6180cd01e8e/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ef0886ea-a8a3-4772-8361-6b7b99a5c87a/console.sql" />
-        <option value="$PROJECT_DIR$/reference_scraper.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5342873f-8713-4c4d-8252-cc5cf0aae74a/console.sql" />
         <option value="ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/salary_info.sql" />
-        <option value="$PROJECT_DIR$/salary_scraper2001plus.py" />
+        <option value="$PROJECT_DIR$/sqlite_cory.py" />
+        <option value="$PROJECT_DIR$/reference_scraper.py" />
+        <option value="$PROJECT_DIR$/Cleaning_the_Data.py" />
+        <option value="$PROJECT_DIR$/salary_cleaner.py" />
+        <option value="$PROJECT_DIR$/spotrac_scraper.ipynb" />
         <option value="5342873f-8713-4c4d-8252-cc5cf0aae74a/schema/main/table/salary_info.sql" />
+        <option value="$PROJECT_DIR$/salary_scraper2001plus.py" />
       </list>
     </option>
   </component>
@@ -356,10 +310,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="58" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="830" />
+    <option name="width" value="1222" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -384,6 +339,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="fantasy_fb_contract_year" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -419,22 +385,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="fantasy_fb_contract_year" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
-    <property name="SearchEverywhereHistoryKey" value="CREATE_TABLE&#9;null&#9;null&#10;conn&#9;FILE&#9;file:///Users/coltkess/PycharmProjects/fantasy_fb_contract_year/lib/python3.7/site-packages/sqlalchemy/connectors&#10;cursor&#9;null&#9;null&#10;todo&#9;ACTION&#9;ActivateTODOToolWindow&#10;spotrac&#9;null&#9;null&#10;Clean&#9;FILE&#9;file:///Users/coltkess/PycharmProjects/fantasy_fb_contract_year/Cleaning_the_Data.py" />
+    <property name="SearchEverywhereHistoryKey" value="to_csv&#9;null&#9;null&#10;CREATE_TABLE&#9;null&#9;null&#10;conn&#9;FILE&#9;file:///Users/coltkess/PycharmProjects/fantasy_fb_contract_year/lib/python3.7/site-packages/sqlalchemy/connectors&#10;cursor&#9;null&#9;null&#10;todo&#9;ACTION&#9;ActivateTODOToolWindow&#10;spotrac&#9;null&#9;null&#10;Clean&#9;FILE&#9;file:///Users/coltkess/PycharmProjects/fantasy_fb_contract_year/Cleaning_the_Data.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect" value="SQLite&#10;GenericSQL" />
     <property name="database.console.LAST_STATE" value="false" />
@@ -505,22 +460,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="reference_scraper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="salary_cleaner" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fantasy_fb_contract_year" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/name_tagger/bin/python" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reference_scraper.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/salary_cleaner.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -531,6 +483,9 @@
       <module name="fantasy_fb_contract_year" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
       <option name="IS_MODULE_SDK" value="true" />
@@ -591,19 +546,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.reference_scraper" />
       <item itemvalue="Python.Cleaning_the_Data" />
       <item itemvalue="Python.salary_scraper" />
       <item itemvalue="Python.salary_pickle" />
       <item itemvalue="Python.salary_scraper2001plus" />
+      <item itemvalue="Python.salary_cleaner" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.salary_scraper2001plus" />
+        <item itemvalue="Python.salary_cleaner" />
         <item itemvalue="Python.Cleaning_the_Data" />
         <item itemvalue="Python.salary_pickle" />
         <item itemvalue="Python.salary_scraper" />
-        <item itemvalue="Python.reference_scraper" />
       </list>
     </recent_temporary>
   </component>
@@ -807,7 +762,70 @@
       <option name="project" value="LOCAL" />
       <updated>1536535967200</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Managed to move all the salary data to an SQLite3 database, still trying to figure out how to merge the two.">
+      <created>1536644873747</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1536644873747</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Routine commit now that I have all the data stored at the very least.">
+      <created>1536644914605</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1536644914605</updated>
+    </task>
+    <task id="LOCAL-00030" summary="All current NFL player salaries.">
+      <created>1536644953466</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1536644953466</updated>
+    </task>
+    <task id="LOCAL-00031" summary="All current NFL player salaries.">
+      <created>1536644960738</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1536644960738</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Further updated the sql database, added what will hopefully be the key to join the two datasets.">
+      <created>1536728287080</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1536728287080</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Further updated the sql database, added what will hopefully be the key to join the two datasets.">
+      <created>1536728301741</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1536728301741</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Integrated my two SQL databases = all current NFL players' salary histories and all fantasy stats since 2000.">
+      <created>1536889115038</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1536889115038</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Integrated my two SQL databases = all current NFL players' salary histories and all fantasy stats since 2000.">
+      <created>1536889132843</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1536889132843</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Integrated my two SQL databases = all current NFL players' salary histories and all fantasy stats since 2000.">
+      <created>1536889147484</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1536889147484</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -820,34 +838,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="830" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="867" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50625" visible="true" weight="0.1981402" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50625" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" sideWeight="0.4848485" side_tool="true" weight="0.20800571" />
       <window_info id="Favorites" order="2" sideWeight="0.49375" side_tool="true" weight="0.17381974" />
-      <window_info anchor="bottom" id="Inspection Results" weight="0.32867134" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4985694" weight="0.32867134" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49284694" weight="0.4013986" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49787956" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49284694" weight="0.40026596" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49787956" weight="0.3997344" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4996151" weight="0.32867134" />
-      <window_info anchor="bottom" id="Database Console" order="7" sideWeight="0.49642345" visible="true" weight="0.33986014" />
+      <window_info anchor="bottom" id="Database Console" order="7" sideWeight="0.49642345" weight="0.33776596" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49540582" weight="0.33986014" />
-      <window_info anchor="bottom" id="Database Changes" order="10" sideWeight="0.49892628" weight="0.32867134" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49427754" weight="0.33909574" />
+      <window_info anchor="bottom" id="Database Changes" order="10" sideWeight="0.49785408" weight="0.32867134" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4996421" weight="0.32867134" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5035765" side_tool="true" visible="true" weight="0.33986014" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50214595" side_tool="true" weight="0.32867134" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32867134" />
       <window_info anchor="bottom" id="Messages" order="14" />
-      <window_info anchor="bottom" id="Python Console" order="15" weight="0.4027972" />
+      <window_info anchor="bottom" id="Python Console" order="15" weight="0.40159574" />
+      <window_info anchor="bottom" id="Inspection Results" order="16" weight="0.32867134" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Database" order="3" sideWeight="0.4851695" visible="true" weight="0.17453505" />
-      <window_info anchor="right" id="SciView" order="4" sideWeight="0.49159664" weight="0.41181365" />
-      <window_info anchor="right" x="0" y="0" width="279" height="630" id="Documentation" order="5" sideWeight="0.5148305" side_tool="true" weight="0.17453505" />
+      <window_info anchor="right" id="Database" order="3" sideWeight="0.4855876" visible="true" weight="0.22818312" />
+      <window_info anchor="right" id="SciView" order="4" sideWeight="0.49159664" weight="0.41130185" />
+      <window_info anchor="right" x="0" y="0" width="279" height="630" id="Documentation" order="5" sideWeight="0.5144124" side_tool="true" weight="0.33762518" />
       <window_info anchor="right" id="Coverage" order="6" side_tool="true" />
       <window_info anchor="right" id="Mongo Explorer" order="7" sideWeight="0.49789914" weight="0.0" />
     </layout>
@@ -914,7 +933,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Copied HERO Scrapes, pasted here." />
     <MESSAGE value="Added the list of features wanted (&quot;team&quot;, &quot;fantasy_pos&quot;, &quot;age&quot;, etc)" />
     <MESSAGE value="This version gives a pretty good scrape:&#10;{YEAR: {&quot;playerID.htm&quot;: &quot;Player Name&quot;}}" />
     <MESSAGE value="Totally went a new direction thanks to this tutorial: https://github.com/savvastj/nfl_draft/blob/master/Exploring%20the%20NFL%20Draft%20with%20Python.ipynb&#10;&#10;I added part of this code to remove the *+ from pro-bowl/all pro names: https://github.com/mdgoldberg/sportsref/blob/master/sportsref/utils.py&#10;&#10;Currently, this outputs everything I need for as many years as I want and combines them into a single dataframe. Now I just need to figure out how to view and work with that dataframe." />
@@ -935,7 +953,12 @@
     <MESSAGE value="u = list" />
     <MESSAGE value="removed u = list" />
     <MESSAGE value="It worked! Grabbed all but a couple players' full contract history thanks to try:/except:. Now I need to chase down Michael Crabtree and Odell Beckham Jr. for some reason." />
-    <option name="LAST_COMMIT_MESSAGE" value="It worked! Grabbed all but a couple players' full contract history thanks to try:/except:. Now I need to chase down Michael Crabtree and Odell Beckham Jr. for some reason." />
+    <MESSAGE value="Managed to move all the salary data to an SQLite3 database, still trying to figure out how to merge the two." />
+    <MESSAGE value="Routine commit now that I have all the data stored at the very least." />
+    <MESSAGE value="All current NFL player salaries." />
+    <MESSAGE value="Further updated the sql database, added what will hopefully be the key to join the two datasets." />
+    <MESSAGE value="Integrated my two SQL databases = all current NFL players' salary histories and all fantasy stats since 2000." />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated my two SQL databases = all current NFL players' salary histories and all fantasy stats since 2000." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -954,38 +977,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b97fa158-3210-4a3f-9685-b141f9a809fb/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://2ee1c86a-cc70-431b-818f-beb3aae57e1c/schema/main/table/fantasy_football" />
-    <entry file="das://1d7c91b6-b5a2-4107-8354-6110e947ca1f/schema/main/table/fantasy_football.sql" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d7c91b6-b5a2-4107-8354-6110e947ca1f/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/sqldialects.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/name_tagger/lib/python3.6/site-packages/pandas/core/indexes/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="3084" selection-start-line="3084" selection-end-line="3084" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/name_tagger/lib/python3.6/site-packages/pandas/core/frame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="1744" selection-start-line="1744" selection-end-line="1744" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/name_tagger/lib/python3.6/site-packages/pandas/io/formats/csvs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
@@ -1037,34 +1028,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spotrac_scraper.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/salary_scraper2000.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://1d7c91b6-b5a2-4107-8354-6110e947ca1f/schema/main/table/fantasy_football2">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://1d7c91b6-b5a2-4107-8354-6110e947ca1f/schema/main/table/fantasy_football">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://1d7c91b6-b5a2-4107-8354-6110e947ca1f/schema/main/table/fantasy_football2" />
+    <entry file="das://1d7c91b6-b5a2-4107-8354-6110e947ca1f/schema/main/table/fantasy_football" />
     <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/fantasy_football2">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1076,9 +1041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-912">
           <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1105,16 +1067,6 @@
     <entry file="file://$PROJECT_DIR$/lib/python3.7/site-packages/sqlalchemy/connectors/zxJDBC.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cleaning_the_Data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/python3.7/site-packages/sqlalchemy/testing/requirements.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
@@ -1129,23 +1081,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sqlite_cory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a18ab66f-6848-47e6-8022-a6180cd01e8e/schema/main/table/salary_info.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://a18ab66f-6848-47e6-8022-a6180cd01e8e/schema/main/table/salary_info.sql" />
     <entry file="file://$PROJECT_DIR$/pyvenv.cfg">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1156,9 +1092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1176,20 +1109,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://a18ab66f-6848-47e6-8022-a6180cd01e8e/schema/main/table/salary_info">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a18ab66f-6848-47e6-8022-a6180cd01e8e/schema/main/table/my_test_table">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://a18ab66f-6848-47e6-8022-a6180cd01e8e/schema/main/table/salary_info" />
+    <entry file="das://a18ab66f-6848-47e6-8022-a6180cd01e8e/schema/main/table/my_test_table" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a18ab66f-6848-47e6-8022-a6180cd01e8e/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1204,29 +1125,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ef0886ea-a8a3-4772-8361-6b7b99a5c87a/console.sql">
+    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/salary_info.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reference_scraper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="204" column="26" selection-start-line="204" selection-start-column="26" selection-end-line="204" selection-end-column="26" />
-          <folding>
-            <element signature="e#21#37#0" expanded="true" />
-            <marker date="1536641529370" expanded="true" signature="201:202" ph="..." />
-            <marker date="1536641529370" expanded="true" signature="1826:1831" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/fantasy_football">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+        <state relative-caret-position="340">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1237,30 +1139,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/salary_info.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/salary_pickle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/salary_scraper2001plus.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="183" column="37" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/salary_info">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1271,10 +1153,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://5342873f-8713-4c4d-8252-cc5cf0aae74a/schema/main/table/salary_info.sql">
+    <entry file="file://$PROJECT_DIR$/salary_pickle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="152">
+          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ef0886ea-a8a3-4772-8361-6b7b99a5c87a/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fe408395-e392-4608-9023-dea212b8e5fe/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/fantasy_football.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sqlite_cory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reference_scraper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="154" column="58" selection-start-line="154" selection-start-column="58" selection-end-line="154" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/name_tagger/lib/python3.6/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="3221" selection-start-line="3221" selection-end-line="3221" />
         </state>
       </provider>
     </entry>
@@ -1285,10 +1205,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/salary_info">
+    <entry file="file://$PROJECT_DIR$/Cleaning_the_Data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/salary_cleaner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spotrac_scraper.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/python3.7/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1301">
+          <caret line="1655" column="50" selection-start-line="1655" selection-start-column="50" selection-end-line="1655" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/python3.7/site-packages/pandas/tests/frame/test_to_csv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/salary_scraper2001plus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="253" column="88" selection-start-line="253" selection-start-column="88" selection-end-line="253" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1f85b999-49c0-40a7-8673-58216af18716/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="49" column="984" selection-start-line="49" selection-start-column="984" selection-end-line="49" selection-end-column="984" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://1f85b999-49c0-40a7-8673-58216af18716/schema/main/table/full_data_frame">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+          <column-attributes>
+            <column name="Player" enabled="false" />
+          </column-attributes>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ef0886ea-a8a3-4772-8361-6b7b99a5c87a/schema/main/table/fantasy_football">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5342873f-8713-4c4d-8252-cc5cf0aae74a/schema/main/table/salary_info.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/salary_scraper2000.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
