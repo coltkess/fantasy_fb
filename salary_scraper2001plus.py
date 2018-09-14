@@ -3,6 +3,7 @@ import urllib.request
 import pandas as pd
 import pickle
 import sqlite3
+import os
 
 # # first step is to create the list of teamcodes spotrac uses in their URLs. Usually it's just team-city, but I might as well grab them. Luckily, the reference tutorial already had all of them, which made it easy. https://wcontractor.github.io/nfl-salary-part2.html
 # team_codes = []
@@ -148,70 +149,112 @@ import sqlite3
 pickle_in = open("current_player_salaries.pickle", "rb")
 current_player_salaries = pickle.load(pickle_in)
 
-# current_player_salaries.Total_Cash = current_player_salaries.Total_Cash.str.replace('$', '')
-# current_player_salaries.Total_Cash = current_player_salaries.Total_Cash.str.replace(',', '')
-#
-# current_player_salaries.Salary = current_player_salaries.Salary.str.replace('$', '')
-# current_player_salaries.Salary = current_player_salaries.Salary.str.replace(',', '')
-# current_player_salaries.Salary = current_player_salaries.Salary.str.replace('-', '')
-#
-# current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace('$', '')
-# current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace(',', '')
-# current_player_salaries.Signing_Bonus = current_player_salaries.Signing_Bonus.str.replace('-', '')
-#
-# current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace('$', '')
-# current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace(',', '')
-# current_player_salaries.Roster_Bonus = current_player_salaries.Roster_Bonus.str.replace('-', '')
-#
-# current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace('$', '')
-# current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace(',', '')
-# current_player_salaries.Workout_Bonus = current_player_salaries.Workout_Bonus.str.replace('-', '')
-#
-# current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace('$', '')
-# current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace(',', '')
-# current_player_salaries.Restructure_Bonus = current_player_salaries.Restructure_Bonus.str.replace('-', '')
-#
-# current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace('$', '')
-# current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace(',', '')
-# current_player_salaries.Option_Bonus = current_player_salaries.Option_Bonus.str.replace('-', '')
-#
-# current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace('$', '')
-# current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace(',', '')
-# current_player_salaries.Incentive = current_player_salaries.Incentive.str.replace('-', '')
+odell = [['Odell Beckham Jr.', 'odell-beckham-jr-14421', '2014', 'nygiants', '$420,000', '$5,888,144', '-', '-', '-',
+          '-', '-', '$6,308,144'],
+         ['Odell Beckham Jr.', 'odell-beckham-jr-14421', '2015', 'nygiants', '$840,479', '-', '-', '-', '-', '-',
+          '$55,751', '$896,230'],
+         ['Odell Beckham Jr.', 'odell-beckham-jr-14421', '2016', 'nygiants', '$1,366,018', '-', '-', '-', '-', '-', '-',
+          '$1,366,018'],
+         ['Odell Beckham Jr.', 'odell-beckham-jr-14421', '2017', 'nygiants', '$1,839,027', '-', '-', '-', '-', '-', '-',
+          '$1,839,027'],
+         ['Odell Beckham Jr.', 'odell-beckham-jr-14421', '2018', 'nygiants', '$1,459,000', '$20,000,000', '-', '-', '-',
+          '-', '-', '$21,459,000']]
 
-print(current_player_salaries.Team.unique())
+sample_headers = ['Player_Name', 'Spotrac_ID', 'Year', 'Team', 'Salary', 'Signing_Bonus', 'Roster_Bonus', 'Workout_Bonus', 'Restructure_Bonus', 'Option_Bonus', 'Incentive', 'Total_Cash']
 
-clean_current_salaries = current_player_salaries.replace(to_replace={'arizona2': 'ARI', 'patriots': 'NWE', 'rams2': 'LAR', 'eagles1': 'PHI', 'vikings': 'MIN', 'bengals': 'CIN', '49erslogo': 'SFO', 'colts': 'IND', 'oakland': 'OAK', 'browns': 'CLE', 'nygiants': 'NYG', 'panthers': 'CAR', 'falcons': 'ATL', 'bucs': 'TAM', 'bears': 'CHI', 'dolphins': 'MIA', 'svg_': 'LAC', 'hawks3': 'SEA', 'dallas': 'DAL', 'ravens': 'BAL', 'lions': 'DET', 'broncos': 'DEN', 'buffalo': 'BUF',
- 'neworleans': 'NOR', 'packers': 'GNB', 'washington': 'WAS', 'kansascity': 'KAN', 'tennessee': 'TEN', 'texans': 'HOU', 'chargers2': 'SDG', 'jets': 'NYJ', 'jaguars': 'JAX', 'rams3': 'STL', 'Pittsburgh-Steelers-logo-psd22874': 'PIT'})
+odell_df = pd.DataFrame(odell, columns=sample_headers)
 
-print(clean_current_salaries.Team.unique())
-
-clean_current_salaries['my_id'] = clean_current_salaries.Player_Name.replace(' ', '_').astype(str).str.cat(clean_current_salaries.Year.astype(str), sep='_').str.cat(clean_current_salaries.Team.astype(str), sep='_')
-
-print(clean_current_salaries.head())
-
-# ['STL' 'IND' 'MIN' 'SFO' 'TEN' 'KAN' 'DEN' 'OAK' 'GNB' 'JAX' 'BAL' 'PHI'
-#  'NYJ' 'SEA' 'MIA' 'WAS' 'NYG' 'NOR' 'DET' 'TAM' 'BUF' 'CIN' 'SDG' 'ARI'
-#  'CAR' 'PIT' 'DAL' 'ATL' 'NWE' 'CHI' 'CLE' '2TM' 'HOU' '3TM' '4TM' 'LAR'
-#  'LAC']
+complete_salaries_df = current_player_salaries.append(odell_df, ignore_index=True)
 
 
-conn = sqlite3.connect('/Users/coltkess/PycharmProjects/fantasy_fb_contract_year/player_salaries')
+
+complete_salaries_df.Total_Cash = complete_salaries_df.Total_Cash.str.replace('$', '')
+complete_salaries_df.Total_Cash = complete_salaries_df.Total_Cash.str.replace(',', '')
+
+complete_salaries_df.Total_Cash = complete_salaries_df.Total_Cash.str.replace('$', '')
+complete_salaries_df.Total_Cash = complete_salaries_df.Total_Cash.str.replace(',', '')
+
+complete_salaries_df.Salary = complete_salaries_df.Salary.str.replace('$', '')
+complete_salaries_df.Salary = complete_salaries_df.Salary.str.replace(',', '')
+complete_salaries_df.Salary = complete_salaries_df.Salary.str.replace('-', '')
+
+complete_salaries_df.Signing_Bonus = complete_salaries_df.Signing_Bonus.str.replace('$', '')
+complete_salaries_df.Signing_Bonus = complete_salaries_df.Signing_Bonus.str.replace(',', '')
+complete_salaries_df.Signing_Bonus = complete_salaries_df.Signing_Bonus.str.replace('-', '')
+
+complete_salaries_df.Roster_Bonus = complete_salaries_df.Roster_Bonus.str.replace('$', '')
+complete_salaries_df.Roster_Bonus = complete_salaries_df.Roster_Bonus.str.replace(',', '')
+complete_salaries_df.Roster_Bonus = complete_salaries_df.Roster_Bonus.str.replace('-', '')
+
+complete_salaries_df.Workout_Bonus = complete_salaries_df.Workout_Bonus.str.replace('$', '')
+complete_salaries_df.Workout_Bonus = complete_salaries_df.Workout_Bonus.str.replace(',', '')
+complete_salaries_df.Workout_Bonus = complete_salaries_df.Workout_Bonus.str.replace('-', '')
+
+complete_salaries_df.Restructure_Bonus = complete_salaries_df.Restructure_Bonus.str.replace('$', '')
+complete_salaries_df.Restructure_Bonus = complete_salaries_df.Restructure_Bonus.str.replace(',', '')
+complete_salaries_df.Restructure_Bonus = complete_salaries_df.Restructure_Bonus.str.replace('-', '')
+
+complete_salaries_df.Option_Bonus = complete_salaries_df.Option_Bonus.str.replace('$', '')
+complete_salaries_df.Option_Bonus = complete_salaries_df.Option_Bonus.str.replace(',', '')
+complete_salaries_df.Option_Bonus = complete_salaries_df.Option_Bonus.str.replace('-', '')
+
+complete_salaries_df.Incentive = complete_salaries_df.Incentive.str.replace('$', '')
+complete_salaries_df.Incentive = complete_salaries_df.Incentive.str.replace(',', '')
+complete_salaries_df.Incentive = complete_salaries_df.Incentive.str.replace('-', '')
+
+
+complete_salaries_df = complete_salaries_df.replace(to_replace={'arizona2': 'ARI', 'patriots': 'NWE', 'rams2': 'LAR', 'eagles1': 'PHI', 'vikings': 'MIN', 'bengals': 'CIN', '49erslogo': 'SFO', 'colts': 'IND', 'oakland': 'OAK', 'browns': 'CLE', 'nygiants': 'NYG', 'panthers': 'CAR', 'falcons': 'ATL', 'bucs': 'TAM', 'bears': 'CHI', 'dolphins': 'MIA', 'svg_': 'LAC', 'hawks3': 'SEA', 'dallas': 'DAL', 'ravens': 'BAL', 'lions': 'DET', 'broncos': 'DEN', 'buffalo': 'BUF','neworleans': 'NOR', 'packers': 'GNB', 'washington': 'WAS', 'kansascity': 'KAN', 'tennessee': 'TEN', 'texans': 'HOU', 'chargers2': 'SDG', 'jets': 'NYJ', 'jaguars': 'JAX', 'rams3': 'STL', 'Pittsburgh-Steelers-logo-psd22874': 'PIT'})
+
+names = complete_salaries_df['Player_Name'].tolist()
+years = complete_salaries_df['Year'].tolist()
+teams = complete_salaries_df['Team'].tolist()
+
+names_under = [i.replace(' ', '_') for i in names]
+
+my_id = []
+if len(names) == len(names_under):
+    for i in range(len(names_under)):
+        my_id.append("{}_{}_{}".format(names_under[i], years[i], teams[i]))
+    # else:
+    #     print(len(names), len(names_under))
+
+complete_salaries_df.insert(0, 'my_ids', my_id)
+
+basepath = "/Users/coltkess/Desktop/"
+file_name = "fantasy_fb_since2000.csv"
+pathtofile = os.path.join(basepath, file_name)
+
+fantasy_stats_df = pd.read_csv("/Users/coltkess/PycharmProjects/fantasy_fb_contract_year/fantasy_football_since2000.csv")
+
+names2 = fantasy_stats_df['Player'].tolist()
+years2 = fantasy_stats_df['Season'].tolist()
+teams2 = fantasy_stats_df['Team'].tolist()
+
+names_under2 = [i.replace(' ', '_') for i in names2]
+
+my_id2 = []
+if len(names2) == len(names_under2):
+    for i in range(len(names_under2)):
+        my_id2.append("{}_{}_{}".format(names_under2[i], years2[i], teams2[i]))
+
+fantasy_stats_df.insert(0, 'my_ids', my_id2)
+
+full_df = pd.merge(fantasy_stats_df, complete_salaries_df, on='my_ids', how='inner')
+
+full_df = full_df.drop(columns=['Rk'])
+
+full_df = full_df.apply(pd.to_numeric, errors="ignore")
+
+num_cols = full_df.columns[full_df.dtypes != object]
+
+full_df.loc[:, num_cols] = full_df.loc[:, num_cols].fillna(0)
+
+print(full_df.info())
+
+conn = sqlite3.connect('/Users/coltkess/PycharmProjects/fantasy_fb_contract_year/full_db')
 c = conn.cursor()
 
-clean_current_salaries.to_sql(name='salary_info', con=conn, if_exists='replace', index=False, dtype={'Player_Name': 'text',
-        'Spotrac_ID': 'text',
-        'Year': 'integer',
-        'Team': 'text',
-        'Salary': 'integer',
-        'Signing_Bonus': 'integer',
-        'Roster_Bonus': 'integer',
-        'Workout_Bonus': 'integer',
-        'Restructure_Bonus': 'integer',
-        'Option_Bonus': 'integer',
-        'Incentive': 'integer',
-        'Total_Cash': 'integer'
-        'my_id'
+full_df.to_sql(name='full_data_frame', con=conn, if_exists='replace', index=False, dtype={'my_ids': 'object', 'Season': 'integer', 'Player': 'object', 'Team_x': 'object', 'Position': 'object', 'Age': 'integer', 'G': 'integer', 'GS': 'integer', 'Pass_Cmp': 'integer', 'Pass_Att': 'integer', 'Pass_Yds': 'integer', 'Pass_TD': 'integer', 'Pass_INT': 'integer', 'Rush_Att': 'integer', 'Rush_Yds': 'integer', 'Rush_YpA': 'float', 'Rush_TD': 'integer', 'Rec_Tgt': 'integer', 'Rec': 'integer', 'Rec_Yds': 'integer', 'Rec_YpR': 'float', 'Rec_TD': 'integer', 'Two_PT_Made': 'integer', 'Two_PT_Pass': 'integer', 'Fantasy_Pts': 'float', 'PPR_Pts': 'float', 'DraftKings_Pts': 'float', 'FanDuel_Pts': 'float', 'VBD': 'integer', 'PosRank': 'integer', 'OvRank': 'integer', 'player_nfl_link': 'object', 'player_team_link': 'object', 'Player_Name': 'object', 'Spotrac_ID': 'object', 'Year': 'integer', 'Team_y': 'object', 'Salary': 'integer', 'Signing_Bonus': 'integer', 'Roster_Bonus': 'integer', 'Workout_Bonus': 'integer', 'Restructure_Bonus': 'integer', 'Option_Bonus': 'integer', 'Incentive': 'integer', 'Total_Cash': 'integer'
 })
 c.close()
 
